@@ -23,6 +23,39 @@
       --muted-lt:   #9A876E;
     }
 
+    /* DARK MODE */
+    body.dark {
+      --bone:       #0E0B08;
+      --bone-dark:  #151009;
+      --bone-deeper:#1C1510;
+      --ink:        #F0E8DC;
+      --ink-soft:   #D9CCBB;
+      --muted:      #9A876E;
+      --muted-lt:   #7A6855;
+      --copper:     #C8804A;
+      --copper-lt:  #D4956A;
+      --copper-glow:#E0A87C;
+      --gold:       #D4AE5C;
+      --gold-lt:    #E8C97A;
+    }
+
+    /* DARK MODE TRANSITION */
+    body { transition: background .35s ease, color .35s ease; }
+    body * { transition: background-color .35s ease, border-color .35s ease, color .35s ease; }
+
+    /* TOGGLE BUTTON */
+    .theme-toggle {
+      background: none;
+      border: 1px solid rgba(160,82,45,.3);
+      border-radius: 20px; padding: 6px 14px;
+      cursor: pointer; display: flex; align-items: center; gap: 7px;
+      font-size: .72rem; font-weight: 500; letter-spacing: .08em;
+      color: var(--ink); transition: all .2s;
+      font-family: 'Outfit', sans-serif;
+    }
+    .theme-toggle:hover { border-color: var(--copper); background: rgba(160,82,45,.06); }
+    .theme-toggle .t-icon { font-size: .95rem; }
+
     html { scroll-behavior: smooth; }
 
     body {
@@ -137,7 +170,7 @@
       font-size: clamp(1.1rem, 2.5vw, 1.5rem);
       font-weight: 300; font-style: italic;
       line-height: 1.2; color: var(--ink-soft);
-      max-width: 600px; margin: 0 auto 28px;
+      max-width: 600px; margin: 0 auto 16px;
     }
     .quote-attr { font-size: .72rem; letter-spacing: .3em; text-transform: uppercase; color: var(--copper); opacity: .7; }
 
@@ -385,7 +418,13 @@
 
 <nav>
   <a class="nav-logo" href="#">Arumata</a>
-  <a class="nav-cta" href="https://arumataofficial.gumroad.com/l/jzsud" target="_blank">Get the Book</a>
+  <div style="display:flex;align-items:center;gap:12px;">
+    <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode">
+      <span class="t-icon">🌙</span>
+      <span class="t-label">Dark</span>
+    </button>
+    <a class="nav-cta" href="https://arumataofficial.gumroad.com/l/jzsud" target="_blank">Get the Book</a>
+  </div>
 </nav>
 
 <section id="hero">
@@ -400,13 +439,7 @@
 
 <section id="quote">
   <div class="container">
-    <p class="quote-text">
-      "Have you ever imagined,<br>
-      living in a future civilization?<br>
-      A world of technology and complex challenges<br>
-      Yet there lies a soul of universal wisdom,<br>
-      the breath of the planet's harmony."
-    </p>
+    <div class="ornament"><span>The Weaver</span></div>
     <br>
     <p class="quote-text">
       "It is not born of a brand new world,<br>
@@ -414,15 +447,7 @@
       Scattered, drifting, forgotten by time,<br>
       from ruins of a land long since dead."
     </p>
-    <br>
-    <p class="quote-text">
-      "Yet, it chooses to be found once more,<br>
-      To be rewoven with love and with tears,<br>
-      forged with burning anger and joyful laughter,<br>
-      to restore the great legacy that has long since vanished."
-    </p>
-    <br>
-    <p class="quote-attr">— The Weaver</p>
+    <p class="quote-attr">- Arumata International</p>
   </div>
 </section>
 
@@ -605,6 +630,29 @@
 </div>
 
 <script>
+  // DARK MODE TOGGLE
+  function toggleTheme() {
+    const body = document.body;
+    const isDark = body.classList.toggle('dark');
+    localStorage.setItem('arumata-theme', isDark ? 'dark' : 'light');
+    const btn = document.querySelector('.theme-toggle');
+    btn.querySelector('.t-icon').textContent = isDark ? '☀️' : '🌙';
+    btn.querySelector('.t-label').textContent = isDark ? 'Light' : 'Dark';
+  }
+
+  // RESTORE SAVED PREFERENCE
+  (function() {
+    const saved = localStorage.getItem('arumata-theme');
+    if (saved === 'dark') {
+      document.body.classList.add('dark');
+      const btn = document.querySelector('.theme-toggle');
+      if (btn) {
+        btn.querySelector('.t-icon').textContent = '☀️';
+        btn.querySelector('.t-label').textContent = 'Light';
+      }
+    }
+  })();
+
   // INTERSECTION OBSERVER ANIMATIONS
   const reveals = document.querySelectorAll('.reveal');
   const observer = new IntersectionObserver((entries) => {
