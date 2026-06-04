@@ -23,39 +23,6 @@
       --muted-lt:   #9A876E;
     }
 
-    /* DARK MODE */
-    body.dark {
-      --bone:       #0E0B08;
-      --bone-dark:  #151009;
-      --bone-deeper:#1C1510;
-      --ink:        #F0E8DC;
-      --ink-soft:   #D9CCBB;
-      --muted:      #9A876E;
-      --muted-lt:   #7A6855;
-      --copper:     #C8804A;
-      --copper-lt:  #D4956A;
-      --copper-glow:#E0A87C;
-      --gold:       #D4AE5C;
-      --gold-lt:    #E8C97A;
-    }
-
-    /* DARK MODE TRANSITION */
-    body { transition: background .35s ease, color .35s ease; }
-    body * { transition: background-color .35s ease, border-color .35s ease, color .35s ease; }
-
-    /* TOGGLE BUTTON */
-    .theme-toggle {
-      background: none;
-      border: 1px solid rgba(160,82,45,.3);
-      border-radius: 20px; padding: 6px 14px;
-      cursor: pointer; display: flex; align-items: center; gap: 7px;
-      font-size: .72rem; font-weight: 500; letter-spacing: .08em;
-      color: var(--ink); transition: all .2s;
-      font-family: 'Outfit', sans-serif;
-    }
-    .theme-toggle:hover { border-color: var(--copper); background: rgba(160,82,45,.06); }
-    .theme-toggle .t-icon { font-size: .95rem; }
-
     html { scroll-behavior: smooth; }
 
     body {
@@ -169,7 +136,7 @@
       font-family: 'Cormorant Garamond', serif;
       font-size: clamp(1.1rem, 2.5vw, 1.5rem);
       font-weight: 300; font-style: italic;
-      line-height: 1.2; color: var(--ink-soft);
+      line-height: 2; color: var(--ink-soft);
       max-width: 600px; margin: 0 auto 16px;
     }
     .quote-attr { font-size: .72rem; letter-spacing: .3em; text-transform: uppercase; color: var(--copper); opacity: .7; }
@@ -412,18 +379,79 @@
       .nav-logo { font-size: 1rem; }
       .bonus-card { padding: 28px 20px; }
     }
-  </style>
+    /* ── DEEP DIVE TABS ── */
+    #deepdive { padding: 80px 24px; background: var(--bone-deeper); }
+
+    .tab-nav {
+      display: flex; gap: 8px; flex-wrap: wrap;
+      margin-top: 40px; margin-bottom: 0;
+      border-bottom: 2px solid rgba(160,82,45,.15);
+      padding-bottom: 0;
+    }
+    .tab-btn {
+      font-family: 'Outfit', sans-serif;
+      font-size: .78rem; font-weight: 500;
+      letter-spacing: .08em;
+      color: var(--muted); background: none; border: none;
+      padding: 10px 20px; cursor: pointer;
+      border-bottom: 2px solid transparent;
+      margin-bottom: -2px;
+      transition: color .2s, border-color .2s;
+    }
+    .tab-btn:hover { color: var(--copper); }
+    .tab-btn.active {
+      color: var(--copper);
+      border-bottom-color: var(--copper);
+      font-weight: 600;
+    }
+    .tab-panels { margin-top: 0; }
+    .tab-panel {
+      display: none;
+      padding: 40px 0 0;
+      animation: fadeUp .4s ease both;
+    }
+    .tab-panel.active { display: block; }
+
+    .tab-article {
+      max-width: 720px; margin: 0 auto;
+    }
+    .tab-article h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.4rem, 3vw, 2rem);
+      font-weight: 600; color: var(--copper);
+      margin-bottom: 24px; line-height: 1.3;
+    }
+    .tab-article p {
+      font-size: .95rem; line-height: 1.85;
+      color: var(--ink-soft); margin-bottom: 18px;
+    }
+    .tab-article .axiom {
+      margin-top: 32px; padding: 20px 28px;
+      border-left: 3px solid var(--copper);
+      background: rgba(160,82,45,.05);
+      border-radius: 0 4px 4px 0;
+    }
+    .tab-article .axiom em {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem; font-style: italic;
+      color: var(--copper); display: block; margin-bottom: 4px;
+    }
+    .tab-article .axiom small {
+      font-size: .75rem; color: var(--muted);
+      letter-spacing: .1em; text-transform: uppercase;
+    }
+  
 </head>
 <body>
 
 <nav>
   <a class="nav-logo" href="#">Arumata</a>
-  <div style="display:flex;align-items:center;gap:12px;">
+  <div style="display:flex;align-items:center;gap:10px;">
+    <button class="lang-toggle theme-toggle" onclick="toggleLang()" aria-label="Toggle language">ID</button>
     <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode">
       <span class="t-icon">🌙</span>
-      <span class="t-label">Dark</span>
     </button>
-    <a class="nav-cta" href="https://arumataofficial.gumroad.com/l/jzsud" target="_blank">Get the Book</a>
+    <a class="nav-cta" href="https://arumataofficial.gumroad.com/l/jzsud" target="_blank" data-en="Get the Book" data-id="Beli Sekarang">Get the Book</a>
   </div>
 </nav>
 
@@ -439,13 +467,7 @@
 
 <section id="quote">
   <div class="container">
-    <p class="quote-text">
-      "Have you ever imagined,<br>
-      living in a future civilization?<br>
-      A world of technology and complex challenges<br>
-      Yet there lies a soul of universal wisdom,<br>
-      the breath of the planet's harmony."
-    </p>
+    <div class="ornament"><span>The Weaver</span></div>
     <br>
     <p class="quote-text">
       "It is not born of a brand new world,<br>
@@ -453,15 +475,7 @@
       Scattered, drifting, forgotten by time,<br>
       from ruins of a land long since dead."
     </p>
-    <br>
-    <p class="quote-text">
-      "Yet, it chooses to be found once more,<br>
-      To be rewoven with love and with tears,<br>
-      forged with burning anger and joyful laughter,<br>
-      to restore the great legacy that has long since vanished."
-    </p>
-    <br>
-    <p class="quote-attr">— The Weaver</p>
+    <p class="quote-attr">- Arumata International</p>
   </div>
 </section>
 
@@ -558,6 +572,111 @@
   </div>
 </section>
 
+<!-- DEEP DIVE TABS -->
+<section id="deepdive">
+  <div class="container">
+    <p class="section-label reveal" data-en="Deeper Reading" data-id="Bacaan Lebih Dalam">Deeper Reading</p>
+    <h2 class="section-title reveal" data-en="Explore the framework,<br>chapter by chapter." data-id="Jelajahi kerangka ini,<br>bab demi bab.">Explore the framework,<br>chapter by chapter.</h2>
+
+    <div class="tab-nav">
+      <button class="tab-btn active" onclick="switchTab(0)" data-en="01 · Arumata" data-id="01 · Arumata">01 · Arumata</button>
+      <button class="tab-btn" onclick="switchTab(1)" data-en="02 · Tiered Roof" data-id="02 · Atap Tumpang">02 · Tiered Roof</button>
+      <button class="tab-btn" onclick="switchTab(2)" data-en="03 · Four Pillars" data-id="03 · Empat Pilar">03 · Four Pillars</button>
+      <button class="tab-btn" onclick="switchTab(3)" data-en="04 · Void & Shadow" data-id="04 · Void & Shadow">04 · Void & Shadow</button>
+      <button class="tab-btn" onclick="switchTab(4)" data-en="05 · Thermo Guerrilla" data-id="05 · Gerilya Termo">05 · Thermo Guerrilla</button>
+    </div>
+
+    <div class="tab-panels">
+
+      <!-- TAB 1: ARUMATA -->
+      <div class="tab-panel active">
+        <div class="tab-article">
+          <h3 data-en="Arumata" data-id="Arumata">Arumata</h3>
+          <p data-en="Have you ever felt like the world is moving too fast for your mind to catch up? In this digital era, glowing screens and algorithms often dictate the daily rhythm of our lives. Unfortunately, amidst such rapid technological advancement, we frequently face a profound emptiness, beginning to lose our understanding of what it truly means to be human. We clearly need a new compass to navigate this vortex, and that is exactly where Arumata steps in to provide direction."
+             data-id="Pernahkah kamu merasa dunia bergerak terlalu cepat hingga pikiran rasanya tertinggal di belakang? Di era yang serba digital ini, layar gawai dan algoritma sering kali mendikte ritme hidup kita sehari-hari. Sayangnya, di tengah kemajuan teknologi yang begitu pesat, kita justru kerap dihadapkan pada rasa hampa dan mulai kehilangan pemahaman tentang apa artinya menjadi manusia yang seutuhnya. Kita jelas membutuhkan sebuah kompas baru untuk menavigasi pusaran ini, dan di situlah Arumata hadir untuk memberikan arah.">Have you ever felt like the world is moving too fast for your mind to catch up? In this digital era, glowing screens and algorithms often dictate the daily rhythm of our lives. Unfortunately, amidst such rapid technological advancement, we frequently face a profound emptiness, beginning to lose our understanding of what it truly means to be human. We clearly need a new compass to navigate this vortex, and that is exactly where Arumata steps in to provide direction.</p>
+          <p data-en="More than just a theoretical concept, Arumata operates as a foundational cognitive system that elegantly bridges the cold precision of modern rationality with the profound warmth of spiritual intuition. It was created to answer our generation's confusion by offering a much more holistic worldview. Its presence serves as a vital foundation, ensuring that no matter how fast machines and technology advance, their development will always remain aligned with nature's principles and our deepest human values."
+             data-id="Lebih dari sekadar konsep teoretis, Arumata beroperasi sebagai sebuah sistem kognitif dasar yang secara elegan menjembatani dinginnya rasionalitas modern dengan hangatnya intuisi spiritual. Ia diciptakan untuk menjawab kebingungan generasi kita dengan menawarkan cara pandang yang jauh lebih utuh. Kehadirannya berfungsi sebagai fondasi vital yang memastikan bahwa secepat apa pun mesin dan teknologi melaju, perkembangannya akan tetap selaras dengan prinsip alam dan nilai kemanusiaan terdalam.">More than just a theoretical concept, Arumata operates as a foundational cognitive system that elegantly bridges the cold precision of modern rationality with the profound warmth of spiritual intuition. It was created to answer our generation's confusion by offering a much more holistic worldview. Its presence serves as a vital foundation, ensuring that no matter how fast machines and technology advance, their development will always remain aligned with nature's principles and our deepest human values.</p>
+          <p data-en="Born from more than a decade of searching and deep reflection, Arumata seeks to weave back together the forgotten fragments of ancient wisdom. The name itself is a blend of the word 'Arum,' which carries the meaning of wisdom, and 'Matah,' which means source. As the 'Source of Wisdom,' this system helps us uncover the core principles behind every life event, while equipping us to move forward with a clear purpose through the complexities of modern challenges."
+             data-id="Lahir dari pencarian dan perenungan selama lebih dari satu dekade, Arumata berupaya merangkai kembali kepingan kearifan kuno yang sempat terlupakan. Namanya merupakan perpaduan dari kata 'Arum' yang bermakna kebijaksanaan, dan 'Matah' yang berarti sumber. Sebagai 'Sumber Kebijaksanaan', sistem ini membantu kita menyingkap prinsip inti di balik setiap peristiwa kehidupan, sekaligus membekali kita untuk melangkah dengan tujuan yang jelas di tengah rumitnya tantangan zaman.">Born from more than a decade of searching and deep reflection, Arumata seeks to weave back together the forgotten fragments of ancient wisdom. The name itself is a blend of the word 'Arum,' which carries the meaning of wisdom, and 'Matah,' which means source. As the 'Source of Wisdom,' this system helps us uncover the core principles behind every life event, while equipping us to move forward with a clear purpose through the complexities of modern challenges.</p>
+          <p data-en="Ultimately, this framework calls us to stop being passive observers, inviting us to rise as weavers of reality who consciously craft balance amidst the chaos of the modern world."
+             data-id="Pada akhirnya, kerangka ini memanggil kita untuk berhenti menjadi pengamat yang pasif, dan mengajak kita untuk bangkit menjadi penenun realitas yang secara sadar merajut keseimbangan di tengah kekacauan dunia modern.">Ultimately, this framework calls us to stop being passive observers, inviting us to rise as weavers of reality who consciously craft balance amidst the chaos of the modern world.</p>
+        </div>
+      </div>
+
+      <!-- TAB 2: TIERED ROOF -->
+      <div class="tab-panel">
+        <div class="tab-article">
+          <h3 data-en="Tiered Roof — The Universe as a Superstructure" data-id="Atap Tumpang — Semesta sebagai Superstruktur">Tiered Roof — The Universe as a Superstructure</h3>
+          <p data-en="Imagine gazing at a tiered roof on an ancient building, not merely as a piece of architecture, but as a blueprint of reality itself. The universe operates on an infinite fractal design pattern, where the smallest components reflect the grander structures above them. Whether it is a microscopic cell, a complex human mind, a bustling society, or the vast cosmos, each of these interconnected systems is known as a Jagat."
+             data-id="Bayangkan kamu sedang menatap atap susun pada bangunan kuno, bukan sekadar sebagai karya arsitektur, melainkan sebagai cetak biru dari realitas itu sendiri. Alam semesta bekerja dengan pola desain fraktal yang tak terbatas, di mana komponen terkecil mencerminkan struktur besar di atasnya. Entah itu sel mikroskopis, pikiran manusia yang kompleks, masyarakat yang sibuk, atau kosmos yang luas — setiap sistem yang saling terhubung ini dikenal dengan istilah Jagat.">Imagine gazing at a tiered roof on an ancient building, not merely as a piece of architecture, but as a blueprint of reality itself. The universe operates on an infinite fractal design pattern, where the smallest components reflect the grander structures above them. Whether it is a microscopic cell, a complex human mind, a bustling society, or the vast cosmos, each of these interconnected systems is known as a Jagat.</p>
+          <p data-en="At the core of every Jagat, there is a continuous interplay of eight fundamental elements: Energy, Duration, Matter, Power, Information, Entropy, Space, and Force. Rather than just rigid scientific terms, all eight are vital forces that shape our physical and psychological landscapes. Even entropy, which often appears as unsettling chaos, is actually a calling for us to consciously reorganize reality into a meaningful new order."
+             data-id="Pada inti setiap Jagat, terdapat interaksi terus-menerus dari delapan elemen fundamental: Energi, Durasi, Materi, Kuasa, Informasi, Entropi, Ruang, dan Gaya. Alih-alih sekadar istilah sains yang kaku, kedelapannya adalah kekuatan vital yang membentuk lanskap fisik dan psikologis kita. Bahkan entropi, yang sering kali muncul sebagai kekacauan yang meresahkan, sebenarnya adalah sebuah panggilan bagi kita untuk secara sadar menata ulang realitas menjadi tatanan baru yang bermakna.">At the core of every Jagat, there is a continuous interplay of eight fundamental elements: Energy, Duration, Matter, Power, Information, Entropy, Space, and Force. Rather than just rigid scientific terms, all eight are vital forces that shape our physical and psychological landscapes. Even entropy, which often appears as unsettling chaos, is actually a calling for us to consciously reorganize reality into a meaningful new order.</p>
+          <p data-en="To truly understand this dynamic, imagine a spider carefully weaving its web or a forest maintaining its delicate ecosystem. If you pull just one thread, the entire structure will immediately vibrate and adjust. These eight elements operate as a closed constraint system — every element acts as a boundary that shapes the others, ensuring every movement loops back to maintain the balance of the whole Jagat."
+             data-id="Untuk benar-benar memahami dinamika ini, bayangkan seekor laba-laba yang sedang menenun jaringnya dengan hati-hati atau sebuah hutan yang mempertahankan ekosistem halusnya. Jika kamu menarik satu benang saja, seluruh struktur akan segera bergetar dan menyesuaikan diri. Kedelapan elemen ini beroperasi sebagai sistem batasan tertutup — setiap elemen bertindak sebagai batas yang membentuk elemen lainnya, memastikan setiap gerakan terus berputar kembali untuk menjaga keseimbangan seluruh Jagat.">To truly understand this dynamic, imagine a spider carefully weaving its web or a forest maintaining its delicate ecosystem. If you pull just one thread, the entire structure will immediately vibrate and adjust. These eight elements operate as a closed constraint system — every element acts as a boundary that shapes the others, ensuring every movement loops back to maintain the balance of the whole Jagat.</p>
+          <div class="axiom">
+            <em>"Jagat Alit Jagat Ageng"</em>
+            <small>Javanese Cosmology</small>
+          </div>
+        </div>
+      </div>
+
+      <!-- TAB 3: FOUR PILLARS -->
+      <div class="tab-panel">
+        <div class="tab-article">
+          <h3 data-en="Trisulawedha: The Four Pillars of Consciousness" data-id="Trisulawedha: Empat Pilar Kesadaran Jagat">Trisulawedha: The Four Pillars of Consciousness</h3>
+          <p data-en="In the language of Arumata, we are not dissecting physical anatomy beneath a microscope, but observing existence as a living, cosmic architecture. Every Jagat — whether a microscopic cell, your individual self, family dynamics, or the orbit of a planet — is built and sustained by the exact same four pillars of consciousness: Spirit (Rasa), Body (Raga), Mind (Pikiran), and Soul (Jiwa). This structural geometry perfectly embodies the ancient Nusantara concept of 'Kiblat Papat Limo Pancer'."
+             data-id="Di dalam Arumata, kita tidak sedang membedah anatomi fisik di bawah mikroskop, melainkan mengamati eksistensi sebagai sebuah arsitektur kehidupan yang utuh. Setiap Jagat — mulai dari sel mikroskopis, diri kita sendiri, dinamika keluarga, hingga perputaran planet — dibangun dan ditopang oleh empat pilar kesadaran yang sama persis: Spirit (Rasa), Tubuh (Raga), Pikiran (Mind), dan Jiwa (Soul). Geometri struktur ini merupakan cerminan sempurna dari konsep kuno Nusantara 'Kiblat Papat Limo Pancer'.">In the language of Arumata, we are not dissecting physical anatomy beneath a microscope, but observing existence as a living, cosmic architecture. Every Jagat — whether a microscopic cell, your individual self, family dynamics, or the orbit of a planet — is built and sustained by the exact same four pillars of consciousness: Spirit (Rasa), Body (Raga), Mind (Pikiran), and Soul (Jiwa). This structural geometry perfectly embodies the ancient Nusantara concept of 'Kiblat Papat Limo Pancer'.</p>
+          <p data-en="Think of it like a Trident of Consciousness (Trisulawedha): three outward-pointing prongs actively respond to and manage external complexities (Body, Mind, Soul), while one solid main handle must be held firmly within (Spirit). If the weaver fails to grip this internal handle tightly, the external prongs of interaction will wobble, causing the entire system to lose its direction and succumb to the friction of reality."
+             data-id="Bayangkan ini seperti sebuah Trisula Kesadaran (Trisulawedha): tiga ujung tombaknya aktif merespons dan mengelola kompleksitas dunia luar (Tubuh, Pikiran, Jiwa), sementara satu gagang utamanya harus digenggam erat-erat di dalam batin (Spirit). Jika sang penenun gagal memegang erat gagang internal ini, ujung tombak interaksinya akan goyah, membuat seluruh sistem kehilangan arah dan hancur tergilas gesekan realitas.">Think of it like a Trident of Consciousness (Trisulawedha): three outward-pointing prongs actively respond to and manage external complexities (Body, Mind, Soul), while one solid main handle must be held firmly within (Spirit). If the weaver fails to grip this internal handle tightly, the external prongs of interaction will wobble, causing the entire system to lose its direction and succumb to the friction of reality.</p>
+          <p data-en="Arumata reminds us that life is a dynamic cycle, where understanding and action constantly spin together to create an increasingly wise order of living. When the Soul creates inner peace, it purifies the Spirit. A strengthened Spirit moves the Body to take real-world action. From these actions, the Mind processes new information, which the Soul then uses to seek even higher levels of meaning."
+             data-id="Arumata mengingatkan kita bahwa kehidupan adalah sebuah siklus dinamis, di mana pemahaman dan tindakan terus berputar menciptakan tatanan hidup yang semakin bijaksana. Saat Jiwa berhasil menciptakan ketenangan, ia akan memurnikan dorongan Spirit. Spirit yang kuat kemudian menggerakkan Tubuh untuk mengambil tindakan nyata. Dari tindakan tersebut, Pikiran memproses informasi baru, yang kemudian kembali digunakan oleh Jiwa untuk mencari tingkat makna yang lebih tinggi.">Arumata reminds us that life is a dynamic cycle, where understanding and action constantly spin together to create an increasingly wise order of living. When the Soul creates inner peace, it purifies the Spirit. A strengthened Spirit moves the Body to take real-world action. From these actions, the Mind processes new information, which the Soul then uses to seek even higher levels of meaning.</p>
+          <div class="axiom">
+            <em>"Kiblat Papat Limo Pancer"</em>
+            <small>Javanese Cosmology</small>
+          </div>
+        </div>
+      </div>
+
+      <!-- TAB 4: VOID & SHADOW -->
+      <div class="tab-panel">
+        <div class="tab-article">
+          <h3 data-en="The Void and the Shadow" data-id="The Void and the Shadow">The Void and the Shadow</h3>
+          <p data-en="What truly drives us to keep moving forward? In the Arumata framework, this drive can come from two sources: abundance (pressure) or a complete emptiness (vacuum). A healthy system of consciousness moves because of the abundance of elements. However, we sometimes move precisely because of the absence of these elements. This profound emptiness is what we call the Void — a deep wound or trauma that settles into and damages the foundation of our consciousness from within."
+             data-id="Apa yang sebenarnya mendorong kita untuk terus melangkah maju? Dalam pandangan Arumata, dorongan ini bisa berasal dari dua hal: kelimpahan (tekanan) atau justru sebuah kehampaan (vakum). Sistem kesadaran yang sehat akan bergerak karena kelimpahan elemen. Namun, terkadang kita bergerak justru karena ketiadaan elemen tersebut. Kehampaan mendalam inilah yang kemudian kita kenal dengan istilah Void — sebuah luka atau trauma yang mengendap dan merusak fondasi kesadaran kita dari dalam.">What truly drives us to keep moving forward? In the Arumata framework, this drive can come from two sources: abundance (pressure) or a complete emptiness (vacuum). A healthy system of consciousness moves because of the abundance of elements. However, we sometimes move precisely because of the absence of these elements. This profound emptiness is what we call the Void — a deep wound or trauma that settles into and damages the foundation of our consciousness from within.</p>
+          <p data-en="When a pillar experiences a Void, the system automatically attempts to cover up the wound by creating an intense overcompensation known as a Shadow. Clothing is no longer an expression of harmony, but rather transforms into an artificial defensive mask to fake self-worth. Meanwhile, speech becomes the primary instrument of the Shadow — whether through emotional manipulation or rigid dogma — purely to hide the fragility behind it."
+             data-id="Ketika sebuah pilar mengalami Void, sistem kesadaran secara otomatis akan berusaha menutupi luka tersebut dengan menciptakan sebuah kompensasi berlebihan yang disebut Shadow. Pakaian tidak lagi menjadi ekspresi harmoni, melainkan berubah menjadi topeng pertahanan artifisial untuk memalsukan nilai diri. Sementara itu, ucapan menjelma menjadi instrumen utama dari Shadow — entah itu berupa manipulasi emosional atau dogma kaku — semata untuk menyembunyikan kerapuhan di baliknya.">When a pillar experiences a Void, the system automatically attempts to cover up the wound by creating an intense overcompensation known as a Shadow. Clothing is no longer an expression of harmony, but rather transforms into an artificial defensive mask to fake self-worth. Meanwhile, speech becomes the primary instrument of the Shadow — whether through emotional manipulation or rigid dogma — purely to hide the fragility behind it.</p>
+          <p data-en="We often fall into the trap of being deceived by someone who constantly argues using the shield of 'logic' as if they possess a strong Mind. In reality, the true root of thinking is curiosity, and the courage to ask questions. If someone acts like a know-it-all but leaves zero room for not knowing, you can be certain their Mind pillar is crumbling. The knowledge they show off will not solve problems, but will instead create new chaos just to maintain an illusion of power they never truly had."
+             data-id="Kita sering kali terkecoh oleh seseorang yang selalu berdebat dengan tameng 'logika' seolah mereka memiliki Pikiran yang kuat. Padahal, akar sejati dari pemikiran adalah rasa ingin tahu dan keberanian untuk bertanya. Jika seseorang bertingkah serba tahu tetapi tidak menyisakan ruang untuk ketidaktahuan, bisa dipastikan pilar Pikirannya sedang runtuh dan mengalami Void. Pengetahuan yang mereka pamerkan tidak akan menyelesaikan masalah, melainkan hanya akan menciptakan kekacauan baru demi mempertahankan ilusi kekuasaan yang sebenarnya tidak pernah mereka miliki.">We often fall into the trap of being deceived by someone who constantly argues using the shield of 'logic' as if they possess a strong Mind. In reality, the true root of thinking is curiosity, and the courage to ask questions. If someone acts like a know-it-all but leaves zero room for not knowing, you can be certain their Mind pillar is crumbling. The knowledge they show off will not solve problems, but will instead create new chaos just to maintain an illusion of power they never truly had.</p>
+          <div class="axiom">
+            <em>"Ajining Diri Saka Lathi, Ajining Raga Saka Busana"</em>
+            <small>Javanese Axiom</small>
+          </div>
+        </div>
+      </div>
+
+      <!-- TAB 5: THERMODYNAMIC GUERRILLA -->
+      <div class="tab-panel">
+        <div class="tab-article">
+          <h3 data-en="Thermodynamic Guerrilla — Hacking Entropy Through Pangastuti" data-id="Gerilya Termodinamika — Meretas Entropi Dengan Pangastuti">Thermodynamic Guerrilla — Hacking Entropy Through Pangastuti</h3>
+          <p data-en="When a massive system begins to make no sense, weakens from within, and loses control, the first instinct is usually to attack — to forcefully take over the broken core or wage war against the masks of evil on the surface. However, Arumata offers a much quieter path, one that is safe for the system's structure, yet highly lethal to the root of chaos: the Thermodynamic Guerrilla. This underground strategy is the systemic manifestation of the ancient Javanese philosophy 'Suradira Jayaningrat Lebur Dening Pangastuti'."
+             data-id="Saat sebuah sistem raksasa mulai tidak masuk akal, melemah dari dalam, dan kehilangan kendali, naluri pertama manusia biasanya adalah menyerang — berusaha menguasai pusat sistem yang rusak secara frontal atau memerangi 'topeng' kejahatan yang muncul di permukaan. Namun, Arumata menawarkan jalan yang jauh lebih sunyi, aman bagi struktur sistem, namun sangat mematikan bagi biang kekacauan: Gerilya Termodinamika. Strategi bawah tanah ini merupakan perwujudan sistemik dari filosofi Jawa kuno 'Suradira Jayaningrat Lebur Dening Pangastuti'.">When a massive system begins to make no sense, weakens from within, and loses control, the first instinct is usually to attack — to forcefully take over the broken core or wage war against the masks of evil on the surface. However, Arumata offers a much quieter path, one that is safe for the system's structure, yet highly lethal to the root of chaos: the Thermodynamic Guerrilla. This underground strategy is the systemic manifestation of the ancient Javanese philosophy 'Suradira Jayaningrat Lebur Dening Pangastuti'.</p>
+          <p data-en="A rigid, corrupt, and destructive system is the manifestation of high entropy. If we fight it with physical violence, we only create new friction that mathematically increases the chaos. This is where the power of Pangastuti operates as pure negentropy — a river of informational honesty that flows peacefully through the cracks of the massive system. Instead of fighting on the noisy stage of chaos, this strategy dissolves macro rigidity by anchoring stability within its smallest units (Micro-Jagat)."
+             data-id="Sistem yang kaku, korup, dan destruktif adalah wujud dari entropi yang tinggi. Jika kita melawannya dengan kekerasan, kita hanya akan menciptakan gesekan baru yang secara matematis justru memperbesar kekacauan. Di sinilah kekuatan Pangastuti bekerja sebagai negentropi murni — sebuah sungai kejujuran informasi yang mengalir damai di celah-celah retaknya sistem besar. Alih-alih bertarung di panggung bising yang diciptakan oleh kekacauan, strategi ini memilih untuk melarutkan kekakuan makro dengan menanamkan jangkar stabilitas di unit terkecilnya (Micro-Jagat).">A rigid, corrupt, and destructive system is the manifestation of high entropy. If we fight it with physical violence, we only create new friction that mathematically increases the chaos. This is where the power of Pangastuti operates as pure negentropy — a river of informational honesty that flows peacefully through the cracks of the massive system. Instead of fighting on the noisy stage of chaos, this strategy dissolves macro rigidity by anchoring stability within its smallest units (Micro-Jagat).</p>
+          <p data-en="Imagine a colossal ship violently tossing in a storm because its main engine has died. Rather than having thousands of passengers panic and grab the wheel, we choose to lower thousands of small anchors from every corner of the ship to restore equilibrium. The strategy executes through three steps: (1) Macro Identification — map which pillar is experiencing core damage; (2) Shadow Identification — find its opposing pillar raging on the surface; (3) Micro Intervention — fortify the complementary elements in the smallest units, without attacking the mask directly."
+             data-id="Bayangkan sebuah kapal raksasa yang sedang oleng dihantam badai karena mesin utamanya mati total. Daripada ribuan penumpang panik berebut kemudi, kita memilih untuk menurunkan ribuan jangkar kecil dari tiap sudut kapal untuk mengembalikan titik keseimbangan. Strategi ini dieksekusi melalui tiga langkah: (1) Identifikasi Makro — petakan pilar mana yang sedang mengalami kerusakan inti; (2) Identifikasi Shadow — temukan pilar berlawanannya yang sedang mengamuk di permukaan; (3) Intervensi Mikro — perkuat elemen penyeimbang di unit paling kecil, tanpa perlu menyerang topeng tersebut secara langsung.">Imagine a colossal ship violently tossing in a storm because its main engine has died. Rather than having thousands of passengers panic and grab the wheel, we choose to lower thousands of small anchors from every corner of the ship to restore equilibrium. The strategy executes through three steps: (1) Macro Identification — map which pillar is experiencing core damage; (2) Shadow Identification — find its opposing pillar raging on the surface; (3) Micro Intervention — fortify the complementary elements in the smallest units, without attacking the mask directly.</p>
+          <p data-en="Because the universe has a fractal nature, the order we patiently build at the smallest level will not stop there. It will slowly cascade upward until it finally restores harmony across the entire macro system. True transformation is born from a quiet devotion to the smallest units that flows in harmony with the laws of nature."
+             data-id="Karena alam semesta memiliki sifat fraktal, keteraturan yang kita bangun dengan sabar di tingkat terkecil tidak akan berhenti di sana. Keteraturan itu akan merambat naik secara perlahan hingga akhirnya memulihkan harmoni di seluruh sistem makro. Transformasi sejati justru lahir dari pengabdian sunyi pada unit-unit kecil yang mengalir selaras dengan ritme hukum alam.">Because the universe has a fractal nature, the order we patiently build at the smallest level will not stop there. It will slowly cascade upward until it finally restores harmony across the entire macro system. True transformation is born from a quiet devotion to the smallest units that flows in harmony with the laws of nature.</p>
+          <div class="axiom">
+            <em>"Suradira Jayaningrat Lebur Dening Pangastuti"</em>
+            <small>Javanese Philosophy</small>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- end tab-panels -->
+  </div>
+</section>
+
 <section id="samples">
   <div class="container">
     <p class="section-label reveal">A Glimpse Inside</p>
@@ -644,28 +763,42 @@
 </div>
 
 <script>
-  // DARK MODE TOGGLE
-  function toggleTheme() {
-    const body = document.body;
-    const isDark = body.classList.toggle('dark');
-    localStorage.setItem('arumata-theme', isDark ? 'dark' : 'light');
-    const btn = document.querySelector('.theme-toggle');
-    btn.querySelector('.t-icon').textContent = isDark ? '☀️' : '🌙';
-    btn.querySelector('.t-label').textContent = isDark ? 'Light' : 'Dark';
+  // TAB SWITCHING
+  function switchTab(index) {
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.tab-btn')[index].classList.add('active');
+    document.querySelectorAll('.tab-panel')[index].classList.add('active');
   }
 
-  // RESTORE SAVED PREFERENCE
-  (function() {
-    const saved = localStorage.getItem('arumata-theme');
-    if (saved === 'dark') {
-      document.body.classList.add('dark');
-      const btn = document.querySelector('.theme-toggle');
-      if (btn) {
-        btn.querySelector('.t-icon').textContent = '☀️';
-        btn.querySelector('.t-label').textContent = 'Light';
-      }
-    }
-  })();
+  // LANGUAGE TOGGLE
+  let currentLang = localStorage.getItem('arumata-lang') || 'en';
+
+  function applyLang(lang) {
+    currentLang = lang;
+    localStorage.setItem('arumata-lang', lang);
+    document.querySelectorAll('[data-en]').forEach(el => {
+      el.innerHTML = lang === 'id' ? el.dataset.id : el.dataset.en;
+    });
+    const langBtn = document.querySelector('.lang-toggle');
+    if (langBtn) langBtn.textContent = lang === 'id' ? 'EN' : 'ID';
+  }
+
+  function toggleLang() { applyLang(currentLang === 'en' ? 'id' : 'en'); }
+
+  if (currentLang === 'id') applyLang('id');
+
+  // DARK MODE
+  function toggleTheme() {
+    const isDark = document.body.classList.toggle('dark');
+    localStorage.setItem('arumata-theme', isDark ? 'dark' : 'light');
+    document.querySelector('.t-icon').textContent = isDark ? '☀️' : '🌙';
+  }
+  if (localStorage.getItem('arumata-theme') === 'dark') {
+    document.body.classList.add('dark');
+    const icon = document.querySelector('.t-icon');
+    if (icon) icon.textContent = '☀️';
+  }
 
   // INTERSECTION OBSERVER ANIMATIONS
   const reveals = document.querySelectorAll('.reveal');
