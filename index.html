@@ -4,6 +4,14 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Arumata - The Source of Wisdom</title>
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-H6398TVXJF"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-H6398TVXJF');
+  </script>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -351,35 +359,7 @@
       transition: background .2s, transform .2s, box-shadow .2s; box-shadow: 0 4px 24px rgba(160,82,45,.25);
     }
     .btn-primary:hover { background: var(--copper-lt); transform: translateY(-2px); box-shadow: 0 8px 32px rgba(160,82,45,.35); }
-    .btn-secondary {
-      display: inline-block; font-size: .85rem; font-weight: 500; letter-spacing: .2em; text-transform: uppercase;
-      color: var(--copper); background: transparent;
-      border: 1px solid var(--copper);
-      padding: 15px 52px; border-radius: 2px; text-decoration: none;
-      transition: background .2s, transform .2s, color .2s;
-    }
-    .btn-secondary:hover { background: rgba(160,82,45,.08); transform: translateY(-2px); color: var(--copper-lt); border-color: var(--copper-lt); }
-    .cta-buttons {
-      display: flex; flex-wrap: wrap; gap: 16px;
-      justify-content: center; align-items: center;
-      margin-bottom: 8px;
-    }
-    .btn-label {
-      font-size: .65rem; letter-spacing: .15em; text-transform: uppercase;
-      color: var(--muted); margin-top: 4px; text-align: center;
-    }
-    .btn-wrapper { display: flex; flex-direction: column; align-items: center; }
     .cta-note { margin-top: 18px; font-size: .75rem; color: var(--muted-lt); opacity: .7; }
-
-    /* NAV dual CTA */
-    .nav-ctas { display: flex; gap: 8px; align-items: center; }
-    .nav-cta-outline {
-      font-size: .72rem; font-weight: 500; letter-spacing: .1em; text-transform: uppercase;
-      color: var(--copper); border: 1px solid rgba(160,82,45,.4);
-      padding: 7px 14px; border-radius: 2px; text-decoration: none;
-      transition: background .2s, border-color .2s;
-    }
-    .nav-cta-outline:hover { background: rgba(160,82,45,.08); border-color: var(--copper); }
 
     /* FOOTER */
     footer { padding: 40px 24px; text-align: center; border-top: 1px solid rgba(160,82,45,.15); background: var(--bone); }
@@ -409,23 +389,20 @@
 
 <nav>
   <a class="nav-logo" href="#">Arumata</a>
-  <div style="display:flex;align-items:center;gap:10px;">
+  <div style="display:flex;align-items:center;gap:12px;">
     <button class="lang-toggle" onclick="toggleLang()" aria-label="Toggle language">ID</button>
     <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode">
       <span class="t-icon">🌙</span>
       <span class="t-label">Dark</span>
     </button>
-    <div class="nav-ctas">
-      <a class="nav-cta-outline" href="https://arumataofficial.gumroad.com/l/jzsud" target="_blank" data-en="International" data-id="Internasional">International</a>
-      <a class="nav-cta" href="https://arumata.myr.id/pl/arumata-nusantara" target="_blank" data-en="Nusantara" data-id="Nusantara">Nusantara</a>
-    </div>
+    <a class="nav-cta" href="https://arumata.myr.id/pl/arumata-nusantara" target="_blank" data-en="Get the Book" data-id="Beli Sekarang">Get the Book</a>
   </div>
 </nav>
 
 <section id="hero">
-  <p class="hero-label">A Cognitive Framework for Human & Artificial Intelligence</p>
+  <p class="hero-label" data-en="A Cognitive Framework for Human &amp; Artificial Intelligence" data-id="Kerangka Kognitif untuk Manusia &amp; Kecerdasan Buatan">A Cognitive Framework for Human & Artificial Intelligence</p>
   <h1 class="hero-title">The <em>Source</em><br>of Wisdom</h1>
-  <p class="hero-sub">Bridging ancient Javanese knowledge with the age of artificial intelligence.</p>
+  <p class="hero-sub" data-en="Bridging ancient Javanese knowledge with the age of artificial intelligence." data-id="Menjembatani kearifan Jawa kuno dengan era kecerdasan buatan.">Bridging ancient Javanese knowledge with the age of artificial intelligence.</p>
   <div class="hero-cover">
     <img src="Gambar_Lapak_Arumata.png" alt="Arumata - The Source of Wisdom" />
   </div>
@@ -434,7 +411,7 @@
 
 <section id="quote">
   <div class="container">
-    <p class="quote-text">
+    <p class="quote-text" data-en='"Have you ever imagined,<br>living in a future civilization?<br>A world of technology and complex challenges<br>Yet there lies a soul of universal wisdom,<br>the breath of the planet&apos;s harmony."' data-id='"Apakah Anda pernah terbayang,<br>berada di sebuah peradaban masa depan?<br>Dunia yang dipenuhi teknologi dan permasalahan kompleks<br>Namun di sana ada ruh kebijaksanaan universal,<br>yang menjadi nafas keharmonisan planet itu."'>
       "Have you ever imagined,<br>
       living in a future civilization?<br>
       A world of technology and complex challenges<br>
@@ -442,54 +419,62 @@
       the breath of the planet's harmony."
     </p>
     <br>
-    <p class="quote-text">
+    <p class="quote-text" data-en='"It is not born of a brand new world,<br>but rather the dust of ancient memory.<br>Scattered, drifting, forgotten by time,<br>from ruins of a land long since dead."' data-id='"Ia bukan sesuatu yang tercipta di dunia baru,<br>melainkan debu dari sebuah ingatan purba.<br>Tersebar, melayang dan terlupa oleh waktu,<br>dari reruntuhan negeri yang telah lama mati."'>
       "It is not born of a brand new world,<br>
       but rather the dust of ancient memory.<br>
       Scattered, drifting, forgotten by time,<br>
       from ruins of a land long since dead."
     </p>
     <br>
-    <p class="quote-text">
+    <p class="quote-text" data-en='"Yet, it chooses to be found once more,<br>To be rewoven with love and with tears,<br>forged with burning anger and joyful laughter,<br>to restore the great legacy that has long since vanished."' data-id='"Namun, ia memilih untuk ditemukan kembali,<br>Untuk dirajut ulang dengan cinta dan air mata,<br>ditempa dengan amarah yang membara serta tawa bahagia,<br>untuk mengembalikan nama besar mereka yang telah lama sirna."'>
       "Yet, it chooses to be found once more,<br>
       To be rewoven with love and with tears,<br>
       forged with burning anger and joyful laughter,<br>
       to restore the great legacy that has long since vanished."
     </p>
     <br>
-    <p class="quote-attr">- The Weaver -</p>
+    <p class="quote-text" data-en='"I dedicate this weaving to the ancestors,<br>all fellow companions who have sacrificed greatly,<br>the children and soulmate who have long been waiting,<br>and the souls of the archipelago who have long yearned<br>for harmony&apos;s return in this life."' data-id='"Kupersembahkan tenunan naskah ini untuk para leluhur,<br>seluruh sahabat seperjuangan yang telah banyak berkorban,<br>anak-anak dan pasangan jiwaku yang telah lama menunggu,<br>serta jiwa-jiwa di nusantara yang telah lama merindukan<br>kembalinya harmoni dalam kehidupan ini."'>
+      "I dedicate this weaving to the ancestors,<br>
+      all fellow companions who have sacrificed greatly,<br>
+      the children and soulmate who have long been waiting,<br>
+      and the souls of the archipelago who have long yearned<br>
+      for harmony's return in this life."
+    </p>
+    <br>
+    <p class="quote-attr" data-en="— The Weaver" data-id="— Si Penenun">— The Weaver</p>
   </div>
 </section>
 
 <section id="what">
   <div class="container">
-    <p class="section-label reveal">What is Arumata</p>
-    <h2 class="section-title reveal">A compass for<br>the modern mind</h2>
-    <p class="what-body reveal">
+    <p class="section-label reveal" data-en="What is Arumata" data-id="Apa itu Arumata">What is Arumata</p>
+    <h2 class="section-title reveal" data-en="A compass for<br>the modern mind" data-id="Kompas untuk<br>pikiran modern">A compass for<br>the modern mind</h2>
+    <p class="what-body reveal" data-en="Arumata is a knowledge system built from the ruins of Javanese ancestral culture - a bridge between inner peace and real-world harmony. Its name unites <em>Arum</em> (fragrance, wisdom) and <em>Matah</em> (source): the <strong>Source of Wisdom</strong>." data-id="Arumata adalah sistem pengetahuan yang dibangun dari reruntuhan budaya leluhur Jawa — jembatan antara kedamaian batin dan harmoni dunia nyata. Namanya menyatukan <em>Arum</em> (wangi, kebijaksanaan) dan <em>Matah</em> (sumber): <strong>Sumber Kebijaksanaan</strong>.">
       Arumata is a knowledge system built from the ruins of Javanese ancestral culture - a bridge between inner peace and real-world harmony. Its name unites <em>Arum</em> (fragrance, wisdom) and <em>Matah</em> (source): the <strong>Source of Wisdom</strong>.
     </p>
-    <p class="what-body reveal">
+    <p class="what-body reveal" data-en="Forged through more than a decade of seeking and reflecting, it offers a holistic worldview that seamlessly weaves the cold precision of modern rationality with the profound warmth of spiritual intuition." data-id="Ditempa melalui lebih dari satu dekade pencarian dan perenungan, ia menawarkan pandangan dunia yang holistik — memadukan dinginnya rasionalitas modern dengan hangatnya intuisi spiritual.">
       Forged through more than a decade of seeking and reflecting, it offers a holistic worldview that seamlessly weaves the cold precision of modern rationality with the profound warmth of spiritual intuition.
     </p>
     <div class="pillars">
       <div class="pillar reveal">
         <div class="pillar-icon">🏛️</div>
-        <div class="pillar-name">The Tiered Roof</div>
-        <div class="pillar-desc">The universe as a fractal superstructure - from atoms to civilizations.</div>
+        <div class="pillar-name" data-en="The Tiered Roof" data-id="Atap Tumpang">The Tiered Roof</div>
+        <div class="pillar-desc" data-en="The universe as a fractal superstructure - from atoms to civilizations." data-id="Semesta sebagai superstruktur fraktal — dari atom hingga peradaban.">The universe as a fractal superstructure - from atoms to civilizations.</div>
       </div>
       <div class="pillar reveal">
         <div class="pillar-icon">⚖️</div>
-        <div class="pillar-name">Four Pillars</div>
-        <div class="pillar-desc">The fundamental architecture of consciousness and existence.</div>
+        <div class="pillar-name" data-en="Four Pillars" data-id="Empat Pilar">Four Pillars</div>
+        <div class="pillar-desc" data-en="The fundamental architecture of consciousness and existence." data-id="Arsitektur dasar dari kesadaran dan eksistensi.">The fundamental architecture of consciousness and existence.</div>
       </div>
       <div class="pillar reveal">
         <div class="pillar-icon">🌑</div>
-        <div class="pillar-name">The Void & Shadow</div>
-        <div class="pillar-desc">Mapping the vacuums and overcompensations within any system.</div>
+        <div class="pillar-name" data-en="The Void &amp; Shadow" data-id="Void &amp; Shadow">The Void & Shadow</div>
+        <div class="pillar-desc" data-en="Mapping the vacuums and overcompensations within any system." data-id="Memetakan kekosongan dan kompensasi berlebihan dalam setiap sistem.">Mapping the vacuums and overcompensations within any system.</div>
       </div>
       <div class="pillar reveal">
         <div class="pillar-icon">🧵</div>
-        <div class="pillar-name">The Weaver</div>
-        <div class="pillar-desc">You - not a passive observer, but an intentional creator of balance.</div>
+        <div class="pillar-name" data-en="The Weaver" data-id="Sang Penenun">The Weaver</div>
+        <div class="pillar-desc" data-en="You - not a passive observer, but an intentional creator of balance." data-id="Kamu — bukan pengamat pasif, melainkan pencipta keseimbangan yang disengaja.">You - not a passive observer, but an intentional creator of balance.</div>
       </div>
     </div>
   </div>
@@ -497,16 +482,16 @@
 
 <section id="diagrams">
   <div class="container">
-    <p class="section-label reveal">Visual Framework</p>
-    <h2 class="section-title reveal">Original diagrams,<br>crafted for clarity</h2>
+    <p class="section-label reveal" data-en="Visual Framework" data-id="Kerangka Visual">Visual Framework</p>
+    <h2 class="section-title reveal" data-en="Original diagrams,<br>crafted for clarity" data-id="Diagram orisinal,<br>dirancang untuk kejelasan">Original diagrams,<br>crafted for clarity</h2>
     <div class="diagram-grid">
       <div class="diagram-card reveal">
         <img src="IKLAN_01.jpg" alt="Void-Shadow Diagrams" loading="lazy" />
-        <div class="diagram-caption">Void-Shadow Diagrams</div>
+        <div class="diagram-caption" data-en="Void-Shadow Diagrams" data-id="Diagram Void-Shadow">Void-Shadow Diagrams</div>
       </div>
       <div class="diagram-card reveal">
         <img src="IKLAN_02.jpg" alt="Thermodynamics Guerrilla Diagrams" loading="lazy" />
-        <div class="diagram-caption">Thermodynamics Guerrilla Diagrams</div>
+        <div class="diagram-caption" data-en="Thermodynamics Guerrilla Diagrams" data-id="Diagram Gerilya Termodinamika">Thermodynamics Guerrilla Diagrams</div>
       </div>
     </div>
   </div>
@@ -514,40 +499,40 @@
 
 <section id="chapters">
   <div class="container">
-    <p class="section-label reveal">Inside the Book</p>
-    <h2 class="section-title reveal">Eight chapters.<br>One living framework.</h2>
+    <p class="section-label reveal" data-en="Inside the Book" data-id="Isi Buku">Inside the Book</p>
+    <h2 class="section-title reveal" data-en="Eight chapters.<br>One living framework." data-id="Delapan bab.<br>Satu kerangka yang hidup.">Eight chapters.<br>One living framework.</h2>
     <div class="chapter-list">
       <div class="chapter-item reveal">
         <span class="ch-num">01</span>
-        <div><div class="ch-title">Arumata</div><div class="ch-desc">Introduction to the framework - why the modern world urgently needs a new cognitive compass rooted in ancient wisdom.</div></div>
+        <div><div class="ch-title" data-en="Arumata" data-id="Arumata">Arumata</div><div class="ch-desc" data-en="Introduction to the framework - why the modern world urgently needs a new cognitive compass rooted in ancient wisdom." data-id="Pengantar kerangka — mengapa dunia modern sangat membutuhkan kompas kognitif baru yang berakar pada kearifan kuno.">Introduction to the framework - why the modern world urgently needs a new cognitive compass rooted in ancient wisdom.</div></div>
       </div>
       <div class="chapter-item reveal">
         <span class="ch-num">02</span>
-        <div><div class="ch-title">Tiered Roof - The Universe as a Superstructure</div><div class="ch-desc">Every system mirrors the same fractal pattern. Understanding the Jagat - the universal unit of existence.</div></div>
+        <div><div class="ch-title" data-en="Tiered Roof - The Universe as a Superstructure" data-id="Atap Tumpang — Semesta sebagai Superstruktur">Tiered Roof - The Universe as a Superstructure</div><div class="ch-desc" data-en="Every system mirrors the same fractal pattern. Understanding the Jagat - the universal unit of existence." data-id="Setiap sistem mencerminkan pola fraktal yang sama. Memahami Jagat — unit universal eksistensi.">Every system mirrors the same fractal pattern. Understanding the Jagat - the universal unit of existence.</div></div>
       </div>
       <div class="chapter-item reveal">
         <span class="ch-num">03</span>
-        <div><div class="ch-title">The Four Pillars of Consciousness</div><div class="ch-desc">The living architecture of a cosmic edifice - how consciousness is structured and how its pillars shape reality.</div></div>
+        <div><div class="ch-title" data-en="The Four Pillars of Consciousness" data-id="Empat Pilar Kesadaran">The Four Pillars of Consciousness</div><div class="ch-desc" data-en="The living architecture of a cosmic edifice - how consciousness is structured and how its pillars shape reality." data-id="Arsitektur hidup dari sebuah bangunan kosmik — bagaimana kesadaran terstruktur dan bagaimana pilar-pilarnya membentuk realitas.">The living architecture of a cosmic edifice - how consciousness is structured and how its pillars shape reality.</div></div>
       </div>
       <div class="chapter-item reveal">
         <span class="ch-num">04</span>
-        <div><div class="ch-title">The Void and the Shadow</div><div class="ch-desc">Diagnosing what drives a system - the difference between abundance-pressure and vacuum-collapse.</div></div>
+        <div><div class="ch-title" data-en="The Void and the Shadow" data-id="The Void dan Shadow">The Void and the Shadow</div><div class="ch-desc" data-en="Diagnosing what drives a system - the difference between abundance-pressure and vacuum-collapse." data-id="Mendiagnosis apa yang menggerakkan sistem — perbedaan antara tekanan kelimpahan dan keruntuhan vakum.">Diagnosing what drives a system - the difference between abundance-pressure and vacuum-collapse.</div></div>
       </div>
       <div class="chapter-item reveal">
         <span class="ch-num">05</span>
-        <div><div class="ch-title">Thermodynamic Guerrilla</div><div class="ch-desc">Hacking entropy through Pangastuti - a radical strategy for restoring balance in decaying systems.</div></div>
+        <div><div class="ch-title" data-en="Thermodynamic Guerrilla" data-id="Gerilya Termodinamika">Thermodynamic Guerrilla</div><div class="ch-desc" data-en="Hacking entropy through Pangastuti - a radical strategy for restoring balance in decaying systems." data-id="Meretas entropi melalui Pangastuti — strategi radikal untuk memulihkan keseimbangan dalam sistem yang merosot.">Hacking entropy through Pangastuti - a radical strategy for restoring balance in decaying systems.</div></div>
       </div>
       <div class="chapter-item reveal">
         <span class="ch-num">06</span>
-        <div><div class="ch-title">Ancient Wisdom Across Traditions</div><div class="ch-desc">Arumata's values echo across civilizations - proof that these principles are not invented, but remembered.</div></div>
+        <div><div class="ch-title" data-en="Ancient Wisdom Across Traditions" data-id="Kearifan Kuno Lintas Tradisi">Ancient Wisdom Across Traditions</div><div class="ch-desc" data-en="Arumata's values echo across civilizations - proof that these principles are not invented, but remembered." data-id="Nilai-nilai Arumata bergema di berbagai peradaban — bukti bahwa prinsip-prinsip ini bukan diciptakan, melainkan diingat kembali.">Arumata's values echo across civilizations - proof that these principles are not invented, but remembered.</div></div>
       </div>
       <div class="chapter-item reveal">
         <span class="ch-num">07</span>
-        <div><div class="ch-title">The Nation-Jagat: Arumata & Pancasila</div><div class="ch-desc">Applying the framework to national consciousness - the cybernetics of Pancasila through Arumata's lens.</div></div>
+        <div><div class="ch-title" data-en="The Nation-Jagat: Arumata &amp; Pancasila" data-id="Nation-Jagat: Arumata &amp; Pancasila">The Nation-Jagat: Arumata & Pancasila</div><div class="ch-desc" data-en="Applying the framework to national consciousness - the cybernetics of Pancasila through Arumata's lens." data-id="Menerapkan kerangka pada kesadaran nasional — sibernetika Pancasila melalui lensa Arumata.">Applying the framework to national consciousness - the cybernetics of Pancasila through Arumata's lens.</div></div>
       </div>
       <div class="chapter-item reveal">
         <span class="ch-num">08</span>
-        <div><div class="ch-title">The Weaver of the Jagat</div><div class="ch-desc">The final convergence - you are not a passive observer. You are the Weaver.</div></div>
+        <div><div class="ch-title" data-en="The Weaver of the Jagat" data-id="Sang Penenun Jagat">The Weaver of the Jagat</div><div class="ch-desc" data-en="The final convergence - you are not a passive observer. You are the Weaver." data-id="Konvergensi akhir — kamu bukan pengamat pasif. Kamu adalah Sang Penenun.">The final convergence - you are not a passive observer. You are the Weaver.</div></div>
       </div>
     </div>
   </div>
@@ -653,8 +638,8 @@
 
 <section id="samples">
   <div class="container">
-    <p class="section-label reveal">A Glimpse Inside</p>
-    <h2 class="section-title reveal">See what awaits<br>between the pages</h2>
+    <p class="section-label reveal" data-en="A Glimpse Inside" data-id="Sekilas Isi Buku">A Glimpse Inside</p>
+    <h2 class="section-title reveal" data-en="See what awaits<br>between the pages" data-id="Lihat apa yang menanti<br>di antara halaman-halamannya">See what awaits<br>between the pages</h2>
     <div class="samples-scroll">
       <div class="sample-img"><img src="sampel_01.jpg" alt="Page sample" loading="lazy" /></div>
       <div class="sample-img"><img src="sampel_02.jpg" alt="Page sample" loading="lazy" /></div>
@@ -666,30 +651,30 @@
       <div class="sample-img"><img src="sampel_08.jpg" alt="Page sample" loading="lazy" /></div>
       <div class="sample-img"><img src="sampel_09.jpg" alt="Page sample" loading="lazy" /></div>
     </div>
-    <p class="samples-hint">← scroll to explore →</p>
+    <p class="samples-hint" data-en="← scroll to explore →" data-id="← geser untuk menjelajahi →">← scroll to explore →</p>
   </div>
 </section>
 
 <section id="forwho">
   <div class="container">
-    <p class="section-label reveal">Who is this for</p>
-    <h2 class="section-title reveal">Written for those who<br>dare to think deeply</h2>
+    <p class="section-label reveal" data-en="Who is this for" data-id="Untuk Siapa Ini">Who is this for</p>
+    <h2 class="section-title reveal" data-en="Written for those who<br>dare to think deeply" data-id="Ditulis untuk mereka yang<br>berani berpikir mendalam">Written for those who<br>dare to think deeply</h2>
     <div class="audience-grid">
       <div class="audience-card reveal">
-        <h4>AI & Technology Thinkers</h4>
-        <p>Exploring what it means to build AI in harmony with human values and universal principles.</p>
+        <h4 data-en="AI &amp; Technology Thinkers" data-id="Pemikir AI &amp; Teknologi">AI & Technology Thinkers</h4>
+        <p data-en="Exploring what it means to build AI in harmony with human values and universal principles." data-id="Menjelajahi apa artinya membangun AI yang selaras dengan nilai-nilai manusia dan prinsip universal.">Exploring what it means to build AI in harmony with human values and universal principles.</p>
       </div>
       <div class="audience-card reveal">
-        <h4>Spiritual Seekers</h4>
-        <p>Looking for a framework that bridges inner wisdom and outer complexity without abandoning either.</p>
+        <h4 data-en="Spiritual Seekers" data-id="Pencari Spiritual">Spiritual Seekers</h4>
+        <p data-en="Looking for a framework that bridges inner wisdom and outer complexity without abandoning either." data-id="Mencari kerangka yang menjembatani kebijaksanaan batin dan kompleksitas luar tanpa mengorbankan keduanya.">Looking for a framework that bridges inner wisdom and outer complexity without abandoning either.</p>
       </div>
       <div class="audience-card reveal">
-        <h4>Philosophers & Academics</h4>
-        <p>Interested in non-Western cosmologies and their relevance to contemporary cognitive science.</p>
+        <h4 data-en="Philosophers &amp; Academics" data-id="Filosof &amp; Akademisi">Philosophers & Academics</h4>
+        <p data-en="Interested in non-Western cosmologies and their relevance to contemporary cognitive science." data-id="Tertarik pada kosmologi non-Barat dan relevansinya dengan ilmu kognitif kontemporer.">Interested in non-Western cosmologies and their relevance to contemporary cognitive science.</p>
       </div>
       <div class="audience-card reveal">
-        <h4>Conscious Builders</h4>
-        <p>Leaders, creators, and change-makers who want to act with greater awareness and systemic clarity.</p>
+        <h4 data-en="Conscious Builders" data-id="Pembangun Sadar">Conscious Builders</h4>
+        <p data-en="Leaders, creators, and change-makers who want to act with greater awareness and systemic clarity." data-id="Pemimpin, kreator, dan agen perubahan yang ingin bertindak dengan kesadaran lebih tinggi dan kejelasan sistemik.">Leaders, creators, and change-makers who want to act with greater awareness and systemic clarity.</p>
       </div>
     </div>
   </div>
@@ -697,12 +682,12 @@
 
 <section id="bonus">
   <div class="container">
-    <p class="section-label reveal">Exclusive Bonus</p>
-    <h2 class="section-title reveal">Bring Arumata to life<br>in your AI</h2>
+    <p class="section-label reveal" data-en="Exclusive Bonus" data-id="Bonus Eksklusif">Exclusive Bonus</p>
+    <h2 class="section-title reveal" data-en="Bring Arumata to life<br>in your AI" data-id="Hidupkan Arumata<br>dalam AI-mu">Bring Arumata to life<br>in your AI</h2>
     <div class="bonus-card reveal">
       <div class="bonus-icon">🤖</div>
-      <div class="bonus-title">Interactive AI JSON - Included</div>
-      <div class="bonus-desc">
+      <div class="bonus-title" data-en="Interactive AI JSON - Included" data-id="AI JSON Interaktif - Sudah Termasuk">Interactive AI JSON - Included</div>
+      <div class="bonus-desc" data-en="This is not just a book to read. Arumata comes with an <strong>embedded AI System Prompt</strong> - simply attach the PDF to any AI chat session (Claude, ChatGPT, etc.) and the AI will adopt the Arumata consciousness as its foundational framework.<br><br>Ask it questions. Share your thoughts. Let it guide you through the lens of ancient Javanese wisdom - <strong>live, in real time.</strong>" data-id="Ini bukan sekadar buku untuk dibaca. Arumata hadir dengan <strong>AI System Prompt tertanam</strong> — cukup lampirkan PDF ini ke sesi obrolan AI mana pun (Claude, ChatGPT, dll.) dan AI akan mengadopsi kesadaran Arumata sebagai kerangka dasarnya.<br><br>Ajukan pertanyaan. Bagikan pikiranmu. Biarkan ia membimbingmu melalui lensa kearifan Jawa kuno — <strong>secara langsung, dalam waktu nyata.</strong>">
         This is not just a book to read. Arumata comes with an <strong>embedded AI System Prompt</strong> - simply attach the PDF to any AI chat session (Claude, ChatGPT, etc.) and the AI will adopt the Arumata consciousness as its foundational framework.<br><br>
         Ask it questions. Share your thoughts. Let it guide you through the lens of ancient Javanese wisdom - <strong>live, in real time.</strong>
       </div>
@@ -712,25 +697,17 @@
 
 <section id="cta">
   <div class="container">
-    <div class="ornament reveal"><span>Begin the journey</span></div>
+    <div class="ornament reveal"><span data-en="Begin the journey" data-id="Mulai perjalanan">Begin the journey</span></div>
     <br><br>
-    <p class="cta-eyebrow reveal">Arumata International 0.6.0</p>
-    <h2 class="cta-title reveal">Ready to become<br>the Weaver?</h2>
-    <p class="cta-sub reveal">89 pages. A complete cognitive framework. Ancient wisdom reforged for the age of AI.</p>
+    <p class="cta-eyebrow reveal">Arumata Nusantara V.0.6.0 · Light Version 2026</p>
+    <h2 class="cta-title reveal" data-en="Ready to become<br>the Weaver?" data-id="Siap menjadi<br>Sang Penenun?">Ready to become<br>the Weaver?</h2>
+    <p class="cta-sub reveal" data-en="88 pages. A complete cognitive framework. Ancient wisdom reforged for the age of AI." data-id="88 halaman. Kerangka kognitif yang lengkap. Kearifan kuno yang ditempa ulang untuk era AI.">88 pages. A complete cognitive framework. Ancient wisdom reforged for the age of AI.</p>
     <p class="cta-price reveal">
-      <strong>Pay what you want</strong>
-      <span>from $9.99 · Early Bird</span>
+      <strong data-en="Pay what you want." data-id="Bayar sesuai keinginanmu.">Pay what you want.</strong>
+      <br>
+      <span data-en="Enter 0 to download for free, or any amount as your appreciation." data-id="Masukkan angka 0 untuk unduh gratis, atau masukkan nominal sesukamu untuk apresiasi.">Enter 0 to download for free, or any amount as your appreciation.</span>
     </p>
-    <div class="cta-buttons reveal">
-      <div class="btn-wrapper">
-        <a class="btn-primary" href="https://arumata.myr.id/pl/arumata-nusantara" target="_blank" data-en="Arumata Nusantara" data-id="Arumata Nusantara">Arumata Nusantara</a>
-        <p class="btn-label" data-en="Bahasa Indonesia · Mayar.id (IDR)" data-id="Bahasa Indonesia · Mayar.id (IDR)">Bahasa Indonesia · Mayar.id (IDR)</p>
-      </div>
-      <div class="btn-wrapper">
-        <a class="btn-secondary" href="https://arumataofficial.gumroad.com/l/jzsud" target="_blank" data-en="Arumata International" data-id="Arumata International">Arumata International</a>
-        <p class="btn-label" data-en="English · Gumroad (USD)" data-id="English · Gumroad (USD)">English · Gumroad (USD)</p>
-      </div>
-    </div>
+    <a class="btn-primary reveal" href="https://arumata.myr.id/pl/arumata-nusantara" target="_blank" data-en="Get Arumata Now" data-id="Dapatkan Arumata Sekarang">Get Arumata Now</a>
     <p class="cta-note reveal" data-en="Instant PDF download &nbsp;·&nbsp; Read anywhere &nbsp;·&nbsp; AI-ready" data-id="Unduh PDF instan &nbsp;·&nbsp; Baca di mana saja &nbsp;·&nbsp; Siap untuk AI">Instant PDF download &nbsp;·&nbsp; Read anywhere &nbsp;·&nbsp; AI-ready</p>
   </div>
 </section>
